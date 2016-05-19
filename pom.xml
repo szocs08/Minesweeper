@@ -5,6 +5,19 @@
 	<artifactId>Minesweeper</artifactId>
 	<version>1.0</version>
 	<name>Minesweeper</name>
+	<description>Minesweeper game with JavaFX UI</description>
+	<scm>
+		<url>https://github.com/szocs08/Minesweeper</url>
+	</scm>
+	<developers>
+		<developer>
+			<roles>
+				<role>Developer</role>
+			</roles>
+			<name>Szőcs Gábor</name>
+			<email>szgabor08@gmail.com</email>
+		</developer>
+	</developers>
 	<build>
 		<plugins>
 			<plugin>
@@ -42,6 +55,30 @@
 					</execution>
 				</executions>
 			</plugin>
+			
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-enforcer-plugin</artifactId>
+				<version>1.4.1</version>
+				<executions>
+					<execution>
+						<goals>
+							<goal>enforce</goal>
+						</goals>
+						<configuration>
+							<rules>
+								<requireJavaVersion>
+									<version>1.8</version>
+								</requireJavaVersion>
+								<requireProperty>
+									<property>java.vendor</property>
+									<regex>."Oracle."</regex>
+								</requireProperty>
+							</rules>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
 
 		</plugins>
 
@@ -56,4 +93,5 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
+	
 </project>
