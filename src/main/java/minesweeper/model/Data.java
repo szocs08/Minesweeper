@@ -18,7 +18,7 @@ public class Data {
 	 */
 	private int bestTime;
 	/**
-	 * A nyert és lejátszott játékok százalékos aránya.
+	 * A megnyert és lejátszott játékok százalékos aránya.
 	 */
 	private int percentage;
 
@@ -79,14 +79,17 @@ public class Data {
 	}
 
 	/**
-	 * @param bestTime
+	 * Beállítja a leggyorsabb időt.
+	 * @param bestTime a leggyorsabb idő felveendő értéke
 	 */
 	public void setBestTime(int bestTime) {
 		this.bestTime = bestTime;
 	}
 
 	/**
-	 * @param gamesPlayed
+	 * Beállítja a lejátszott játékok számát és ennek megfelelően
+	 * átírja a százalékos arányt.
+	 * @param gamesPlayed a lejátszott játékok felveendő értéke
 	 */
 	public void setGamesPlayed(int gamesPlayed) {
 		this.gamesPlayed = gamesPlayed;
@@ -94,7 +97,9 @@ public class Data {
 	}
 
 	/**
-	 * @param gamesWon
+	 * Beállítja a megnyert játékok számát és ennek megfelelően
+	 * átírja a százalékos arányt.
+	 * @param gamesWon a megnyert játékok felveendő értéke
 	 */
 	public void setGamesWon(int gamesWon) {
 		this.gamesWon = gamesWon;
@@ -102,7 +107,8 @@ public class Data {
 	}
 
 	/**
-	 * @param percentage
+	 * Beállítja megnyert és lejátszott játékok százalékos arányát.
+	 * @param percentage a megnyert és lejátszott játékok százalékos arányának felveendő értéke
 	 */
 	public void setPercentage(int percentage) {
 		this.percentage = percentage;
