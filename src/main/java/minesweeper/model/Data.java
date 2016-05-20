@@ -1,6 +1,6 @@
 package minesweeper.model;
 
-/**Egy néhézségiszinthet tartozó statisztikai adatok.
+/**Egy néhézségiszinthez tartozó statisztikai adatok.
  * @author Gábor
  *
  */

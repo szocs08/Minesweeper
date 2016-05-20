@@ -1,0 +1,1 @@
+Egy a Windows beépített aknakeresõjéhez hasonló aknakeresõ játék.
