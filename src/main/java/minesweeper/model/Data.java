@@ -71,7 +71,8 @@ public class Data {
 	}
 
 	/**
-	 * @return
+	 * Visszaadja nyert és lejátszott játékok százalékos arányát
+	 * @return a nyert és lejátszott játékok százalékos aránya
 	 */
 	public int getPercentage() {
 		return percentage;
