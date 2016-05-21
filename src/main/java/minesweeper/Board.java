@@ -102,7 +102,7 @@ public class Board {
 	 * Visszaadja {@code Position}, {@code Field} párokat tartalmazó {@code Map}
 	 * -et.
 	 * 
-	 * @return a {@code Position}, {@code Field} párokat tartalmazó {@code Map
+	 * @return a {@code Position}, {@code Field} párokat tartalmazó {@code Map}
 	 */
 	@XmlElement(required = true)
 	public TreeMap<Position, Field> getBoard() {
