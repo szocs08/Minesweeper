@@ -10,13 +10,8 @@ import java.util.List;
  *
  */
 public class Position implements Comparable<Position> {
-	/**
-	 * Melyik sorban található a megadott {@code Position}.
-	 */
+
 	private int row;
-	/**
-	 * Melyik oszlopban található a megadott {@code Position}.
-	 */
 	private int column;
 
 	/**

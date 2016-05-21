@@ -15,9 +15,7 @@ import minesweeper.model.Stats;
  *
  */
 public class StatsDom {
-	/**
-	 * A fájl amibe kiírjuk, vagy amiből betöltjük a {@code Stats} osztály adatait.
-	 */
+
 	private File statFile = new File("stats.xml");
 	
 	/**

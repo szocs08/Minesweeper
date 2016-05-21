@@ -14,9 +14,6 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement
 public class Stats {
 
-	/**
-	 * A nehézségi szintenként eltárolt statisztikák egy {@code HashMap}-ben.  
-	 */
 	private Map<Difficulty, Data> statistics = new HashMap<>();
 
 	/**

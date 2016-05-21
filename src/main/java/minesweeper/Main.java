@@ -1,3 +1,4 @@
+ // CHECKSTYLE:OFF
 package minesweeper;
 
 import javafx.application.Application;

@@ -5,21 +5,10 @@ package minesweeper.model;
  *
  */
 public class Data {
-	/**
-	 * A már lejátszott játékok száma. 
-	 */
+
 	private int gamesPlayed;
-	/**
-	 * A megnyert játékok száma. 
-	 */
 	private int gamesWon;
-	/**
-	 * A leggyorsabb idő ami alatt sikerült nyerni.
-	 */
 	private int bestTime;
-	/**
-	 * A megnyert és lejátszott játékok százalékos aránya.
-	 */
 	private int percentage;
 
 	/**

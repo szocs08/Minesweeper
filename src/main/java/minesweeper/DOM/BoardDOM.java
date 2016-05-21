@@ -16,13 +16,7 @@ import minesweeper.Board;
  */
 public class BoardDOM {
 	
-	/**
-	 * A kíírandó {@code Board}.
-	 */
 	private Board board;
-	/**
-	 * A fájl amibe kiírjuk, vagy amiből betöltjük a {@code Board} osztály adatait.
-	 */
 	private File saveFile = new File("save.xml");
 
 	

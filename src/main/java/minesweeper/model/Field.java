@@ -7,25 +7,10 @@ package minesweeper.model;
  *
  */
 public class Field {
-	/**
-	 * Egy adott mező értéke.
-	 * A vele szomszédos aknák száma.
-	 */
+	
 	private int value;
-	/**
-	 * Az adott mező akna-e.
-	 * Az alapértelmezett értéke {@code false}.
-	 */
 	private boolean mine=false;
-	/**
-	 * Az adott mező meg van-e jelölve.
-	 * Az alapértelmezett értéke {@code false}.
-	 */
 	private boolean flaged=false;
-	/**
-	 * Az adott mező látható-e.
-	 * Az alapértelmezett értéke {@code false}.
-	 */
 	private boolean visible=false;
 	
 	/**

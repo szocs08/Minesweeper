@@ -13,6 +13,10 @@ import minesweeper.model.Difficulty;
 import minesweeper.model.Field;
 import minesweeper.model.Position;
 
+/**
+ * @author Gábor
+ *
+ */
 @XmlRootElement
 public class Board {
 
