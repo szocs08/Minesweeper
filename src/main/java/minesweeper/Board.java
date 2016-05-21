@@ -403,7 +403,8 @@ public class Board {
 	}
 
 	/**
-	 * @param pos
+	 * Felfedi az adott pozícióban lévő mezőt.
+	 * @param pos a felfedni kívánt mező {@code Position}-je
 	 */
 	public void showField(Position pos) {
 
