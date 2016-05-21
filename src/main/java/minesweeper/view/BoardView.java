@@ -129,7 +129,7 @@ public class BoardView extends GridPane {
 	}
 
 	public boolean lose() {
-		return board.areWeDead();
+		return board.isBlownUp();
 	}
 
 	public int minesLeft() {

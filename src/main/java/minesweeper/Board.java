@@ -14,6 +14,8 @@ import minesweeper.model.Field;
 import minesweeper.model.Position;
 
 /**
+ * Az akna mezőkből álló tábla, amely játék fő logikáját tartalmazza.
+ * 
  * @author Gábor
  *
  */
@@ -31,10 +33,24 @@ public class Board {
 	private boolean minesPlanted = false;
 	private Difficulty difficulty;
 
+	/**
+	 * Az alapértelmezett üres konstruktor.
+	 */
 	public Board() {
 		super();
 	}
 
+	/**
+	 * Létrehot egy {@code Board} objektumot a megadott értékek alapján.
+	 * {@code Difficulty.Custom} esetén a
+	 * {@link #setCustomProperties(int row, int column, int mineNumber)
+	 * setCustomProperties} metódus hívásával lehet megadni az egyedi adatokat
+	 * egyszerűen.
+	 * 
+	 * @param diff
+	 *            a {@code Difficulty} ami alapján a {@code Board} értékeit
+	 *            beállítjuk
+	 */
 	public Board(Difficulty diff) {
 		difficulty = diff;
 		switch (difficulty) {
@@ -62,12 +78,16 @@ public class Board {
 
 	}
 
-	public boolean areWeDead() {
-		return blownUp;
-	}
-
+	/**
+	 * Megváltoztatja a megadott {@code Position}-ben lévő mező {@code flaged}
+	 * értékét. A metódus lefutása függ attól hogy a mező látható-e vagy a játék
+	 * győzelemmel vagy vereséggel véget ért-e.
+	 * 
+	 * @param position
+	 *            a {@code Position} ahol a mezőt meg kell változtatni
+	 */
 	public void flagAMine(Position position) {
-		if (!board.get(position).isVisible() && !areWeDead() && !won()) {
+		if (!board.get(position).isVisible() && !isBlownUp() && !won()) {
 			if (board.get(position).isFlaged()) {
 				flags--;
 				board.get(position).setFlaged(false);
@@ -78,51 +98,101 @@ public class Board {
 		}
 	}
 
+	/**
+	 * Visszaadja {@code Position}, {@code Field} párokat tartalmazó {@code Map}
+	 * -et.
+	 * 
+	 * @return a {@code Position}, {@code Field} párokat tartalmazó {@code Map
+	 */
 	@XmlElement(required = true)
 	public TreeMap<Position, Field> getBoard() {
 		return board;
 	}
 
+	/**
+	 * Visszadja az oszlopok számát.
+	 * 
+	 * @return az oszlopok száma
+	 */
 	@XmlAttribute(required = true)
 	public int getColumn() {
 		return column;
 	}
 
-
+	/**
+	 * Visszadja a választott nehézségi szintet.
+	 * 
+	 * @return a választott nehézségi szint
+	 */
 	@XmlAttribute(required = true)
 	public Difficulty getDifficulty() {
 		return difficulty;
 	}
 
+	/**
+	 * Visszadja megadott {@code Position}-ben lévő {@code Field}-t.
+	 * 
+	 * @param position
+	 *            a {@code Position} ahonnan a {@code Field}-t keressük
+	 * @return megadott {@code Position}-ben lévő {@code Field}
+	 */
 	public Field getField(Position position) {
 		return board.get(position);
 	}
 
+	/**
+	 * Visszadja hány mezőt jelöltünk már meg.
+	 * 
+	 * @return hány mezőt jelöltünk már meg
+	 */
 	@XmlAttribute(required = true)
 	public int getFlags() {
 		return flags;
 	}
 
+	/**
+	 * Visszadja az aknák számát.
+	 * 
+	 * @return az aknák száma
+	 */
 	@XmlAttribute(required = true)
 	public int getMineNumber() {
 		return mineNumber;
 	}
 
+	/**
+	 * Visszadja a sorok számát.
+	 * 
+	 * @return a sorok száma
+	 */
 	@XmlAttribute(required = true)
 	public int getRow() {
 		return row;
 	}
 
+	/**
+	 * Visszadja a már felfedett mezők számát.
+	 * 
+	 * @return a már felfedett mezők száma
+	 */
 	@XmlAttribute(required = true)
 	public int getShownFields() {
 		return shownFields;
 	}
 
+	/**
+	 * Visszadja a felhasznált időt.
+	 * 
+	 * @return a felhasznált idő
+	 */
 	@XmlAttribute(required = true)
 	public int getTime() {
 		return time;
 	}
 
+	/**
+	 * Inicializálja a kezdeti értékeket egy üres táblával.
+	 */
 	public void initEmptyBoard() {
 		flags = 0;
 		shownFields = 0;
@@ -138,11 +208,32 @@ public class Board {
 		minesPlanted = false;
 	}
 
+	/**
+	 * Visszadja hogy felrobbantunk-e.
+	 * 
+	 * @return felrobbantunk-e
+	 */
+	public boolean isBlownUp() {
+		return blownUp;
+	}
+
+	/**
+	 * Visszadja hogy telepítettük-e már az aknákat.
+	 * 
+	 * @return telepítettük-e már az aknákat
+	 */
 	@XmlAttribute(required = true)
 	public boolean isMinesPlanted() {
 		return minesPlanted;
 	}
 
+	/**
+	 * Az aknák telepítése, ügyelve arra hogy a megadott kezdő {@code Position}
+	 * -ben ne legyen akna.
+	 * 
+	 * @param startPosition
+	 *            a kezdő {@code Position}
+	 */
 	public void minePlanting(Position startPosition) {
 		// lehetséges akna pozíciók
 		List<Position> list = new ArrayList<Position>();
@@ -176,14 +267,46 @@ public class Board {
 		minesPlanted = true;
 	}
 
+	/**
+	 * Visszaadja hány aknát jelöltünk már meg.
+	 * 
+	 * @return a megjelölt aknák száma
+	 */
 	public int remainingMines() {
 		return mineNumber - flags;
 	}
 
+	/**
+	 * Beállítja hogy felrobbantunk-e.
+	 * 
+	 * @param blownUp
+	 *            felrobbantunk-e
+	 */
+	public void setBlownUp(boolean blownUp) {
+		this.blownUp = blownUp;
+	}
+
+	/**
+	 * Beállítja hogy mennyi az oszlopok száma.
+	 * 
+	 * @param column
+	 *            az oszlopok száma
+	 */
 	public void setColumn(int column) {
 		this.column = column;
 	}
 
+	/**
+	 * Beállítja hogy az sorok, oszlopok, és aknák száma mennyi legyen.
+	 * Megszabott határértékeken belül tartja az értékeket.
+	 * 
+	 * @param row
+	 *            a sorok száma
+	 * @param column
+	 *            az oszlopok száma
+	 * @param mineNumber
+	 *            az aknák száma
+	 */
 	public void setCustomProperties(int row, int column, int mineNumber) {
 		if (row < 9)
 			this.row = 9;
@@ -209,37 +332,82 @@ public class Board {
 		initEmptyBoard();
 	}
 
+	/**
+	 * Beállítja hogy mi legyen a nehézségi szint.
+	 * 
+	 * @param difficulty
+	 *            a nehézségi szint
+	 */
 	public void setDifficulty(Difficulty difficulty) {
 		this.difficulty = difficulty;
 	}
 
+	/**
+	 * Beállítja hogy hány mező lett már megjelölve.
+	 * 
+	 * @param flags
+	 *            hány mező lett már megjelölve
+	 */
 	public void setFlags(int flags) {
 		this.flags = flags;
 	}
 
+	/**
+	 * Beállítja hogy mennyi az aknák száma.
+	 * 
+	 * @param mineNumber
+	 *            az aknák száma
+	 */
 	public void setMineNumber(int mineNumber) {
 		this.mineNumber = mineNumber;
 	}
 
+	/**
+	 * Beállítja hogy az aknák telepítve lettek-e már.
+	 * 
+	 * @param minesPlanted
+	 *            az aknák telepítve lettek-e már
+	 */
 	public void setMinesPlanted(boolean minesPlanted) {
 		this.minesPlanted = minesPlanted;
 	}
 
+	/**
+	 * Beállítja hogy mennyi az oszlopok száma.
+	 * 
+	 * @param row
+	 *            az oszlopok száma
+	 */
 	public void setRow(int row) {
 		this.row = row;
 	}
 
+	/**
+	 * Beállítja hogy hogy hány mező lett már felfedve.
+	 * 
+	 * @param shownFields
+	 *            hány mező lett már felfedve
+	 */
 	public void setShownFields(int shownFields) {
 		this.shownFields = shownFields;
 	}
 
+	/**
+	 * Beállítja hogy mennyi idő telt el.
+	 * 
+	 * @param time
+	 *            az eltelt idő
+	 */
 	public void setTime(int time) {
 		this.time = time;
 	}
 
+	/**
+	 * @param pos
+	 */
 	public void showField(Position pos) {
 
-		if (!board.get(pos).isFlaged() && !areWeDead() && !won()) {
+		if (!board.get(pos).isFlaged() && !isBlownUp() && !won()) {
 			board.get(pos).setVisible(true);
 			shownFields++;
 			if (board.get(pos).isMine()) {
@@ -258,6 +426,9 @@ public class Board {
 		}
 	}
 
+	/**
+	 * Felfedi az összes aknát.
+	 */
 	public void showMines() {
 		for (Field field : board.values()) {
 			if (field.isMine())
@@ -265,9 +436,13 @@ public class Board {
 		}
 	}
 
+	/**
+	 * Visszaadja hogy nyertünk-e már.
+	 * 
+	 * @return nyertünk-e már
+	 */
 	public boolean won() {
 		return row * column - mineNumber == shownFields;
 	}
-
 
 }
