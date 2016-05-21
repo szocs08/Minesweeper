@@ -1,3 +1,4 @@
+ // CHECKSTYLE:OFF
 package minesweeper.view;
 
 import javafx.scene.control.ButtonType;

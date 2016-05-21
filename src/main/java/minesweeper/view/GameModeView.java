@@ -1,3 +1,4 @@
+ // CHECKSTYLE:OFF
 package minesweeper.view;
 
 import java.util.Optional;
@@ -45,7 +46,6 @@ public class GameModeView extends Dialog<ButtonType> {
 			if (pair.getKey()) {
 				BoardView returnValue = new BoardView(Difficulty.CUSTOM);
 				returnValue.setCustomProperties(pair.getValue()[0], pair.getValue()[1], pair.getValue()[2]);
-				// System.out.println(returnValue.);
 				return new Pair<Boolean, BoardView>(true, returnValue);
 			} else {
 				return new Pair<Boolean, BoardView>(false, null);

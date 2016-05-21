@@ -37,9 +37,9 @@ public class Field {
 	
 
 	/**
-	 * 
-	 * @param value
-	 * @param mine
+	 * Létrehoz egy {@code Field} objektumot, a megadott értékeknek megfelelően. 
+	 * @param value a szomszédos aknák száma
+	 * @param mine a mező akna-e
 	 */
 	public Field(int value, boolean mine) {
 		super();
@@ -48,56 +48,64 @@ public class Field {
 	}
 
 	/**
-	 * @return
+	 * Visszaadja a szomszédos aknák számát.
+	 * @return a szomszédos aknák száma
 	 */
 	public int getValue() {
 		return value;
 	}
 
 	/**
-	 * @return
+	 * Visszaadja hogy a mező aknának van-e jelölve.
+	 * @return a mező aknanának van-e jelölve
 	 */
 	public boolean isFlaged() {
 		return flaged;
 	}
 
 	/**
-	 * @return
+	 * Visszaadja hogy a mező akna-e.
+	 * @return a mező akna-e
 	 */
 	public boolean isMine() {
 		return mine;
 	}
 
 	/**
-	 * @return
+	 * Visszaadja hogy a mező tartalma látható-e.
+	 * @return a mező tartalma látható-e
 	 */
 	public boolean isVisible() {
 		return visible;
 	}
 
 	/**
-	 * @param flaged
+	 * Beállítja hogy a mező aknának van-e jelölve.
+	 * @param flaged a mező aknanának van-e jelölve
 	 */
 	public void setFlaged(boolean flaged) {
 		this.flaged = flaged;
 	}
 
 	/**
-	 * @param mine
+	 * Beállítja hogy a mező akna-e.
+	 * @param mine a mező akna-e
 	 */
 	public void setMine(boolean mine) {
 		this.mine = mine;
 	}
 
 	/**
-	 * @param value
+	 * Beállítja a szomszédos aknák számát.
+	 * @param value a szomszédos aknák száma
 	 */
 	public void setValue(int value) {
 		this.value = value;
 	}
 
 	/**
-	 * @param visible
+	 * Beállítja hogy a mező tartalma látható-e.
+	 * @param visible a mező tartalma látható-e
 	 */
 	public void setVisible(boolean visible) {
 		this.visible = visible;

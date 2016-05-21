@@ -1,3 +1,4 @@
+ // CHECKSTYLE:OFF
 package minesweeper.view;
 
 import java.util.Map;
@@ -28,7 +29,6 @@ public class BoardView extends GridPane {
 			(double) buttonHeight, (double) buttonHeight, true, false);
 
 	public BoardView(Difficulty difficulty) {
-		//this.set););
 		board = new Board(difficulty);
 		if (difficulty != Difficulty.CUSTOM) {
 			for (Position position : board.getBoard().keySet()) {
@@ -41,7 +41,6 @@ public class BoardView extends GridPane {
 				GridPane.setColumnIndex(buttons.get(position), position.getColumn() + 1);
 
 				this.getChildren().add(buttons.get(position));
-				//flagImage.setPreserveRatio(true);
 			}
 			this.setAlignment(Pos.BOTTOM_CENTER);
 			assignEvent();

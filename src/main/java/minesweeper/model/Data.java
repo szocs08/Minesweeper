@@ -55,7 +55,7 @@ public class Data {
 	}
 
 	/**
-	 * Visszaadja a lejátszott játékok számát
+	 * Visszaadja a lejátszott játékok számát.
 	 * @return a lejátszott játékok száma
 	 */
 	public int getGamesPlayed() {
@@ -63,7 +63,7 @@ public class Data {
 	}
 
 	/**
-	 * Visszaadja a megnyert játékok számát
+	 * Visszaadja a megnyert játékok számát.
 	 * @return a megnyert játékok száma
 	 */
 	public int getGamesWon() {
@@ -71,7 +71,7 @@ public class Data {
 	}
 
 	/**
-	 * Visszaadja nyert és lejátszott játékok százalékos arányát
+	 * Visszaadja nyert és lejátszott játékok százalékos arányát.
 	 * @return a nyert és lejátszott játékok százalékos aránya
 	 */
 	public int getPercentage() {
