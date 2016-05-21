@@ -9,6 +9,10 @@ import java.util.TreeMap;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import minesweeper.model.Difficulty;
 import minesweeper.model.Field;
 import minesweeper.model.Position;
@@ -22,6 +26,8 @@ import minesweeper.model.Position;
 @XmlRootElement
 public class Board {
 
+	private static Logger	logger = LoggerFactory.getLogger(Board.class);
+	
 	private TreeMap<Position, Field> board = new TreeMap<>((c1, c2) -> c1.compareTo(c2));
 	private int row;
 	private int column;
@@ -328,7 +334,9 @@ public class Board {
 			this.mineNumber = ((this.row * this.column) / 5) * 4;
 		else
 			this.mineNumber = mineNumber;
-
+		logger.debug("Row:", this.row);
+		logger.debug("Column:", this.column);
+		logger.debug("Minenumber:", this.mineNumber);
 		initEmptyBoard();
 	}
 
