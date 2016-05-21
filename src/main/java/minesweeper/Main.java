@@ -1,6 +1,9 @@
  // CHECKSTYLE:OFF
 package minesweeper;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import javafx.application.Application;
 import javafx.event.EventHandler;
 import javafx.geometry.Pos;
@@ -11,11 +14,14 @@ import javafx.stage.WindowEvent;
 import minesweeper.view.GameView;
 
 public class Main extends Application {
-
+	
+	private static Logger	logger = LoggerFactory.getLogger(Main.class);
 	private GameView gameView;
 
 	@Override
 	public void start(Stage primaryStage) {
+		
+		logger.info("User {} started the game.", System.getProperty("user.name"));
 		gameView = new GameView();
 		gameView.setAlignment(Pos.TOP_CENTER);
 		Scene scene = new Scene(gameView);
@@ -38,6 +44,7 @@ public class Main extends Application {
 					gameView.setViewChanged(false);
 				}
 				if(gameView.isClose()){
+					logger.info("User {} stopped the game.", System.getProperty("user.name"));
 					primaryStage.close();
 				}
 
