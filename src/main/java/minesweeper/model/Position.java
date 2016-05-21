@@ -3,20 +3,38 @@ package minesweeper.model;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * @author Gábor
+ *
+ */
 public class Position implements Comparable<Position> {
+	/**
+	 * 
+	 */
 	private int row;
+	/**
+	 * 
+	 */
 	private int column;
 
+	/**
+	 * 
+	 */
 	public Position() {
 		super();
 	}
 
+	/**
+	 * @param row
+	 * @param column
+	 */
 	public Position(int row, int column) {
 		super();
 		this.row = row;
 		this.column = column;
 	}
 
+	@SuppressWarnings("checkstyle:javadocmethod")
 	@Override
 	public int compareTo(Position o) {
 		if (Integer.compare(this.row, o.row) == 0)
@@ -24,6 +42,7 @@ public class Position implements Comparable<Position> {
 		return Integer.compare(this.row, o.row);
 	}
 
+	@SuppressWarnings("checkstyle:javadocmethod")
 	@Override
 	public boolean equals(Object obj) {
 		if (obj == null)
@@ -37,14 +56,23 @@ public class Position implements Comparable<Position> {
 
 	}
 
+	/**
+	 * @return
+	 */
 	public int getColumn() {
 		return column;
 	}
 
+	/**
+	 * @return
+	 */
 	public int getRow() {
 		return row;
 	}
 
+	/**
+	 * @return
+	 */
 	public List<Position> neighbours() {
 		List<Position> list = new ArrayList<Position>();
 		for (int i = row - 1; i <= row + 1; i++) {
@@ -57,10 +85,16 @@ public class Position implements Comparable<Position> {
 		return list;
 	}
 	
+	/**
+	 * @param column
+	 */
 	public void setColumn(int column) {
 		this.column = column;
 	}
 	
+	/**
+	 * @param row
+	 */
 	public void setRow(int row) {
 		this.row = row;
 	}
