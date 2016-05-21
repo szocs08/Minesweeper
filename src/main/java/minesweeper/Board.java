@@ -41,7 +41,7 @@ public class Board {
 	}
 
 	/**
-	 * Létrehot egy {@code Board} objektumot a megadott értékek alapján.
+	 * Létrehoz egy {@code Board} objektumot a megadott értékek alapján.
 	 * {@code Difficulty.Custom} esetén a
 	 * {@link #setCustomProperties(int row, int column, int mineNumber)
 	 * setCustomProperties} metódus hívásával lehet megadni az egyedi adatokat
