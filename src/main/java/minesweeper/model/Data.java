@@ -1,11 +1,17 @@
 package minesweeper.model;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import minesweeper.Main;
+
 /**Egy néhézségiszinthez tartozó statisztikai adatok.
  * @author Gábor
  *
  */
 public class Data {
 
+	private static Logger	logger = LoggerFactory.getLogger(Data.class);
 	private int gamesPlayed;
 	private int gamesWon;
 	private int bestTime;
@@ -83,6 +89,7 @@ public class Data {
 	public void setGamesPlayed(int gamesPlayed) {
 		this.gamesPlayed = gamesPlayed;
 		this.percentage = (int) ((double) gamesWon / (double) gamesPlayed * 100);
+		logger.debug("Percentage:", this.percentage);
 	}
 
 	/**
@@ -93,6 +100,7 @@ public class Data {
 	public void setGamesWon(int gamesWon) {
 		this.gamesWon = gamesWon;
 		this.percentage = (int) ((double) gamesWon / (double) gamesPlayed * 100);
+		logger.debug("Percentage:", this.percentage);
 	}
 
 	/**

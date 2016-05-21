@@ -4,6 +4,9 @@ package minesweeper.view;
 import java.util.Map;
 import java.util.TreeMap;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
@@ -12,12 +15,14 @@ import javafx.scene.input.MouseButton;
 import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
 import minesweeper.Board;
+import minesweeper.Main;
 import minesweeper.model.Difficulty;
 import minesweeper.model.Field;
 import minesweeper.model.Position;
 
 public class BoardView extends GridPane {
 
+	private static Logger	logger = LoggerFactory.getLogger(BoardView.class);
 	private double buttonHeight = 25;
 	private double buttonWidth = 25;
 	private Board board;
@@ -59,10 +64,13 @@ public class BoardView extends GridPane {
 						minesPlanted = true;
 					} else {
 						board.showField(buttonsEntry.getKey());
+						logger.trace("Visible:", board.getField(buttonsEntry.getKey()).isVisible());
 					}
 
 				} else if (e.getButton().equals(MouseButton.SECONDARY)) {
 					board.flagAMine(buttonsEntry.getKey());
+					logger.trace("Flag:", board.getField(buttonsEntry.getKey()).isFlaged());
+					
 
 				}
 				if (board.won())

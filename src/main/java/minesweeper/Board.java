@@ -101,6 +101,7 @@ public class Board {
 				flags++;
 				board.get(position).setFlaged(true);
 			}
+			logger.trace("Flags:", this.flags);
 		}
 	}
 

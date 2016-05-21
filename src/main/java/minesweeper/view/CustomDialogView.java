@@ -3,6 +3,9 @@ package minesweeper.view;
 
 import java.util.Optional;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import javafx.geometry.Insets;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
@@ -13,9 +16,11 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.util.Pair;
+import minesweeper.Main;
 
 public class CustomDialogView extends Dialog<ButtonType> {
 
+	private static Logger	logger = LoggerFactory.getLogger(CustomDialogView.class);
 	private GridPane grid = new GridPane();
 	private ButtonType buttonOK = new ButtonType("OK", ButtonData.OK_DONE);
 	private ButtonType buttonCancel = new ButtonType("Cancel", ButtonData.CANCEL_CLOSE);
@@ -53,6 +58,7 @@ public class CustomDialogView extends Dialog<ButtonType> {
 					Alert alert = new Alert(AlertType.ERROR);
 					alert.setContentText("Wrong number(s).");
 					alert.setTitle("Wrong Number(s)");
+					logger.error("Not numbers.");
 					alert.showAndWait();
 					return new Pair<Boolean, int[]>(false, null);
 				}
