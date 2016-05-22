@@ -48,7 +48,9 @@ public class GameModeView extends Dialog<ButtonType> {
 				returnValue.setCustomProperties(pair.getValue()[0], pair.getValue()[1], pair.getValue()[2]);
 				return new Pair<Boolean, BoardView>(true, returnValue);
 			} else {
+				
 				return new Pair<Boolean, BoardView>(false, null);
+				
 			}
 
 		} else {

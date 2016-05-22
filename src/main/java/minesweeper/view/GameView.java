@@ -108,8 +108,9 @@ public class GameView extends GridPane {
 			newGame();
 			mainLayout.getChildren().addAll(scoreLayout, boardView);
 			viewChanged = true;
+			logger.info("Difficulty changed to:{}",pair.getValue().getBoard().getDifficulty());
 		}
-		logger.info("Difficulty changed to:{}",pair.getValue().getBoard().getDifficulty());
+		
 	}
 
 	private void removeEventToBoardView() {
