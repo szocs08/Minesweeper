@@ -32,6 +32,7 @@ public class Timer extends HBox {
 	}
 
 	public void start() {
+		timeLabel.setText(String.valueOf(time));
 		timeline.play();
 	}
 	

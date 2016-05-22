@@ -1,4 +1,4 @@
- // CHECKSTYLE:OFF
+// CHECKSTYLE:OFF
 package minesweeper.view;
 
 import java.util.Map;
@@ -22,7 +22,7 @@ import minesweeper.model.Position;
 
 public class BoardView extends GridPane {
 
-	private static Logger	logger = LoggerFactory.getLogger(BoardView.class);
+	private static Logger logger = LoggerFactory.getLogger(BoardView.class);
 	private double buttonHeight = 25;
 	private double buttonWidth = 25;
 	private Board board;
@@ -31,6 +31,22 @@ public class BoardView extends GridPane {
 	private Image flagImage = new Image(getClass().getClassLoader().getResourceAsStream("flag.png"),
 			(double) buttonHeight, (double) buttonHeight, true, false);
 	private Image mineImage = new Image(getClass().getClassLoader().getResourceAsStream("mine.png"),
+			(double) buttonHeight, (double) buttonHeight, true, false);
+	private Image oneImage = new Image(getClass().getClassLoader().getResourceAsStream("1.png"), (double) buttonHeight,
+			(double) buttonHeight, true, false);
+	private Image twoImage = new Image(getClass().getClassLoader().getResourceAsStream("2.png"), (double) buttonHeight,
+			(double) buttonHeight, true, false);
+	private Image threeImage = new Image(getClass().getClassLoader().getResourceAsStream("3.png"),
+			(double) buttonHeight, (double) buttonHeight, true, false);
+	private Image fourImage = new Image(getClass().getClassLoader().getResourceAsStream("4.png"), (double) buttonHeight,
+			(double) buttonHeight, true, false);
+	private Image fiveImage = new Image(getClass().getClassLoader().getResourceAsStream("5.png"), (double) buttonHeight,
+			(double) buttonHeight, true, false);
+	private Image sixImage = new Image(getClass().getClassLoader().getResourceAsStream("6.png"), (double) buttonHeight,
+			(double) buttonHeight, true, false);
+	private Image sevenImage = new Image(getClass().getClassLoader().getResourceAsStream("7.png"),
+			(double) buttonHeight, (double) buttonHeight, true, false);
+	private Image eightImage = new Image(getClass().getClassLoader().getResourceAsStream("8.png"),
 			(double) buttonHeight, (double) buttonHeight, true, false);
 
 	public BoardView(Difficulty difficulty) {
@@ -70,7 +86,6 @@ public class BoardView extends GridPane {
 				} else if (e.getButton().equals(MouseButton.SECONDARY)) {
 					board.flagAMine(buttonsEntry.getKey());
 					logger.trace("Flag:", board.getField(buttonsEntry.getKey()).isFlaged());
-					
 
 				}
 				if (board.won())
@@ -85,7 +100,6 @@ public class BoardView extends GridPane {
 	}
 
 	private void showField(Position position) {
-		buttons.get(position).setStyle("-fx-font-weight: bold;");
 		buttons.get(position).setGraphic(null);
 		if (board.getBoard().get(position).isFlaged()) {
 			buttons.get(position).setGraphic(new ImageView(flagImage));
@@ -94,35 +108,34 @@ public class BoardView extends GridPane {
 			if (board.getBoard().get(position).isMine()) {
 				buttons.get(position).setGraphic(new ImageView(mineImage));
 			} else {
-				buttons.get(position).setText(String.valueOf(board.getBoard().get(position).getValue()));
 				switch (board.getBoard().get(position).getValue()) {
 				case 1:
-					buttons.get(position).setTextFill(Color.BLUE);
+					buttons.get(position).setGraphic(new ImageView(oneImage));
 					break;
 				case 2:
-					buttons.get(position).setTextFill(Color.DARKBLUE);
+					buttons.get(position).setGraphic(new ImageView(twoImage));
 					break;
 				case 3:
-					buttons.get(position).setTextFill(Color.BLUEVIOLET);
+					buttons.get(position).setGraphic(new ImageView(threeImage));
 					break;
 				case 4:
-					buttons.get(position).setTextFill(Color.DARKGREEN);
+					buttons.get(position).setGraphic(new ImageView(fourImage));
 					break;
 				case 5:
 
-					buttons.get(position).setTextFill(Color.ORANGE);
+					buttons.get(position).setGraphic(new ImageView(fiveImage));
 					break;
 				case 6:
-					buttons.get(position).setTextFill(Color.ORANGERED);
+					buttons.get(position).setGraphic(new ImageView(sixImage));
 					break;
 				case 7:
-					buttons.get(position).setTextFill(Color.RED);
+					buttons.get(position).setGraphic(new ImageView(sevenImage));
 					break;
 				case 8:
-					buttons.get(position).setTextFill(Color.DARKRED);
+					buttons.get(position).setGraphic(new ImageView(eightImage));
 					break;
 				default:
-					buttons.get(position).setText("");
+					buttons.get(position).setGraphic(null);
 					break;
 				}
 			}

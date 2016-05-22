@@ -31,9 +31,11 @@ public class Main extends Application {
 		primaryStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
 			@Override
 			public void handle(WindowEvent event) {
-				if(!gameView.exitMessage())
+				if(gameView.exitMessage())
+					logger.info("User {} stopped the game.", System.getProperty("user.name"));
+				else
 					event.consume();
-				logger.info("User {} stopped the game.", System.getProperty("user.name"));
+				
 			};
 		});
 		gameView.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
@@ -45,7 +47,7 @@ public class Main extends Application {
 					gameView.setViewChanged(false);
 				}
 				if(gameView.isClose()){
-					
+					logger.info("User {} stopped the game.", System.getProperty("user.name"));
 					primaryStage.close();
 				}
 
