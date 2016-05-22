@@ -109,11 +109,11 @@
 			<scope>compile</scope>
 		</dependency>
 		<dependency>
-					<groupId>org.tinylog</groupId>
-					<artifactId>slf4j-binding</artifactId>
-					<version>1.0.3</version>
-					<scope>runtime</scope>
-				</dependency>
+			<groupId>org.tinylog</groupId>
+			<artifactId>slf4j-binding</artifactId>
+			<version>1.0.3</version>
+			<scope>runtime</scope>
+		</dependency>
 	</dependencies>
 
 	<reporting>
@@ -148,5 +148,5 @@
 			</plugin>
 		</plugins>
 	</reporting>
-	
+
 </project>

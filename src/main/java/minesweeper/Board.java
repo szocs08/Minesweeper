@@ -26,8 +26,8 @@ import minesweeper.model.Position;
 @XmlRootElement
 public class Board {
 
-	private static Logger	logger = LoggerFactory.getLogger(Board.class);
-	
+	private static Logger logger = LoggerFactory.getLogger(Board.class);
+
 	private TreeMap<Position, Field> board = new TreeMap<>((c1, c2) -> c1.compareTo(c2));
 	private int row;
 	private int column;
@@ -315,25 +315,31 @@ public class Board {
 	 *            az aknák száma
 	 */
 	public void setCustomProperties(int row, int column, int mineNumber) {
-		if (row < 9)
+		if (row < 9) {
 			this.row = 9;
-		else if (row > 24)
+			logger.warn("Row value is too low.");
+		} else if (row > 24) {
 			this.row = 24;
-		else
+			logger.warn("Row value is too high.");
+		} else
 			this.row = row;
 
-		if (column < 9)
+		if (column < 9) {
 			this.column = 9;
-		else if (column > 30)
+			logger.warn("Column value is too low.");
+		} else if (column > 30) {
 			this.column = 30;
-		else
+			logger.warn("Column value is too high.");
+		} else
 			this.column = column;
 
-		if (mineNumber < 10)
+		if (mineNumber < 10) {
 			this.mineNumber = 10;
-		else if (mineNumber > ((this.row * this.column) / 5) * 4)
+			logger.warn("Minenumber value is too low.");
+		} else if (mineNumber > ((this.row * this.column) / 5) * 4) {
 			this.mineNumber = ((this.row * this.column) / 5) * 4;
-		else
+			logger.warn("Minenumber value is too high.");
+		} else
 			this.mineNumber = mineNumber;
 		logger.debug("Row:", this.row);
 		logger.debug("Column:", this.column);
@@ -413,7 +419,9 @@ public class Board {
 
 	/**
 	 * Felfedi az adott pozícióban lévő mezőt.
-	 * @param pos a felfedni kívánt mező {@code Position}-je
+	 * 
+	 * @param pos
+	 *            a felfedni kívánt mező {@code Position}-je
 	 */
 	public void showField(Position pos) {
 
