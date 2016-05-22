@@ -17,6 +17,20 @@ public class DataTest {
 	}
 
 	@Test
+	public void setterTest() {
+		data=new Data();
+		data.setBestTime(10);
+		data.setGamesPlayed(10);
+		data.setGamesWon(10);
+		data.setPercentage(10);
+		assertEquals(10, data.getBestTime());
+		assertEquals(10, data.getGamesPlayed());
+		assertEquals(10, data.getGamesWon());
+		assertEquals(10, data.getPercentage());
+
+	}
+	
+	@Test
 	public void percentageTest() {
 		assertEquals(50, data.getPercentage());
 	}

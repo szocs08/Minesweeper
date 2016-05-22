@@ -23,6 +23,16 @@ public class BoardTest {
 	}
 
 	@Test
+	public void emptyConstructorTest() {
+
+		board = new Board();
+		assertEquals(0, board.getRow());
+		assertEquals(0, board.getColumn());
+		assertEquals(0, board.getMineNumber());
+
+	}
+	
+	@Test
 	public void easyConstructorTest() {
 
 		board = new Board(Difficulty.MEDIUM);
@@ -85,6 +95,25 @@ public class BoardTest {
 		assertEquals(576, board.getMineNumber());
 
 	}
+	
+	@Test
+	public void setterTest() {
+		board.setDifficulty(Difficulty.CUSTOM);
+		board.setRow(10);
+		board.setColumn(10);
+		board.setMineNumber(10);
+		board.setFlags(10);
+		board.setTime(10);
+		board.setMinesPlanted(true);
+		assertEquals(Difficulty.CUSTOM,board.getDifficulty());
+		assertEquals(10,board.getRow());
+		assertEquals(10,board.getColumn());
+		assertEquals(10,board.getFlags());
+		assertEquals(10,board.getMineNumber());
+		assertEquals(10,board.getTime());
+		assertTrue(board.isMinesPlanted());
+
+	}
 
 	@Test
 	public void minePlantingStartPositionTest() {
@@ -105,6 +134,13 @@ public class BoardTest {
 	public void showFieldTest() {
 		board.showField(new Position(0, 0));
 		assertTrue(board.getField(new Position(0, 0)).isVisible());
+	}
+	
+	@Test
+	public void shownFieldTest() {
+		board.getBoard().put(new Position(0,0), new Field(1,false));
+		board.showField(new Position(0,0));
+		assertEquals(1, board.getShownFields());
 	}
 
 	@Test
@@ -163,11 +199,29 @@ public class BoardTest {
 	}
 	
 	@Test
+	public void flagAMineWhenWonTest() {
+		board.setShownFields(71);
+		board.flagAMine(new Position(0, 0));
+		assertFalse(board.getField(new Position(0, 0)).isFlaged());
+
+	}
+	
+	@Test
+	public void flagAMineWhenBlownUpTest() {
+		board.setBlownUp(true);
+		board.flagAMine(new Position(0, 0));
+		assertFalse(board.getField(new Position(0, 0)).isFlaged());
+
+	}
+	
+	@Test
 	public void remainingMinesTest() {
 		board.flagAMine(new Position(0, 0));
 		assertEquals(9, board.remainingMines());
 
 	}
+	
+	
 	@Test
 	public void wonBoardTest() {
 		board.setShownFields(71);

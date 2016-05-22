@@ -101,7 +101,7 @@ public class Board {
 				flags++;
 				board.get(position).setFlaged(true);
 			}
-			logger.trace("Flags:", this.flags);
+			logger.trace("Flags:{}", this.flags);
 		}
 	}
 
@@ -341,9 +341,9 @@ public class Board {
 			logger.warn("Minenumber value is too high.");
 		} else
 			this.mineNumber = mineNumber;
-		logger.debug("Row:", this.row);
-		logger.debug("Column:", this.column);
-		logger.debug("Minenumber:", this.mineNumber);
+		logger.debug("Row:{}", this.row);
+		logger.debug("Column:{}", this.column);
+		logger.debug("Minenumber:{}", this.mineNumber);
 		initEmptyBoard();
 	}
 

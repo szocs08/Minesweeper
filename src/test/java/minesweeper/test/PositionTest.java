@@ -29,4 +29,12 @@ public class PositionTest {
 	public void equalsNotPositionTest() {
 		assertFalse(position.equals(new Integer(5)));
 	}
+	
+	@Test
+	public void equalsSamePositionTest() {
+		Position pos = new Position();
+		pos.setColumn(0);
+		pos.setRow(0);
+		assertTrue(position.equals(pos));
+	}
 }
