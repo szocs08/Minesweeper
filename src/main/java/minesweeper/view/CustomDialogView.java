@@ -16,7 +16,6 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.util.Pair;
-import minesweeper.Main;
 
 public class CustomDialogView extends Dialog<ButtonType> {
 
@@ -58,7 +57,7 @@ public class CustomDialogView extends Dialog<ButtonType> {
 					Alert alert = new Alert(AlertType.ERROR);
 					alert.setContentText("Wrong number(s).");
 					alert.setTitle("Wrong Number(s)");
-					logger.error("Not numbers.");
+					logger.error("The input is not number.");
 					alert.showAndWait();
 					return new Pair<Boolean, int[]>(false, null);
 				}

@@ -5,6 +5,9 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -22,6 +25,7 @@ import minesweeper.model.Difficulty;
 
 public class GameView extends GridPane {
 
+	private static Logger logger = LoggerFactory.getLogger(GameView.class);
 	private BoardView boardView;
 	private Difficulty difficulty = Difficulty.EASY;
 	private Button newGameButton = new Button("New Game");
@@ -85,7 +89,7 @@ public class GameView extends GridPane {
 	}
 
 	private void newGame() {
-
+		logger.info("New game started.");
 		boardView.newGame();
 		timer.stop();
 		timer.reset();
@@ -105,6 +109,7 @@ public class GameView extends GridPane {
 			mainLayout.getChildren().addAll(scoreLayout, boardView);
 			viewChanged = true;
 		}
+		logger.info("Difficulty changed to:{}",pair.getValue().getBoard().getDifficulty());
 	}
 
 	private void removeEventToBoardView() {
@@ -174,6 +179,7 @@ public class GameView extends GridPane {
 			LoadView loadView = new LoadView();
 			Pair<Boolean, Board> result = loadView.showLoadView(boardView.getBoard());
 			if (result.getKey()) {
+				logger.info("Game loaded.");
 				mainLayout.getChildren().clear();
 				boardView = new BoardView(result.getValue().getDifficulty());
 				if (result.getValue().getDifficulty()==Difficulty.CUSTOM) {

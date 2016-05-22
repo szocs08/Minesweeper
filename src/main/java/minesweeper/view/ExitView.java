@@ -8,9 +8,14 @@ import minesweeper.DOM.BoardDOM;
 
 import java.util.Optional;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import javafx.scene.control.ButtonBar.ButtonData;
 
 public class ExitView extends Dialog<ButtonType> {
+	
+	private static Logger logger = LoggerFactory.getLogger(ExitView.class);
 	private ButtonType yesButton = new ButtonType("Yes");
 	private ButtonType noButton = new ButtonType("No");
 	private ButtonType cancelButton = new ButtonType("Cancel", ButtonData.CANCEL_CLOSE);
@@ -27,6 +32,7 @@ public class ExitView extends Dialog<ButtonType> {
 		BoardDOM boardSaver = new BoardDOM(board);
 		if (result.get() == yesButton) {
 			boardSaver.save(timer.getTime());
+			logger.info("Game saved.");
 			return true;
 
 		} else if (result.get() == noButton) {

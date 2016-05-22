@@ -13,9 +13,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseButton;
 import javafx.scene.layout.GridPane;
-import javafx.scene.paint.Color;
 import minesweeper.Board;
-import minesweeper.Main;
 import minesweeper.model.Difficulty;
 import minesweeper.model.Field;
 import minesweeper.model.Position;
@@ -51,7 +49,7 @@ public class BoardView extends GridPane {
 
 	public BoardView(Difficulty difficulty) {
 		board = new Board(difficulty);
-		logger.trace("Difficulty:", difficulty);
+		logger.trace("Difficulty:{}", difficulty);
 		if (difficulty != Difficulty.CUSTOM) {
 			for (Position position : board.getBoard().keySet()) {
 				buttons.put(position, new Button());
@@ -81,12 +79,12 @@ public class BoardView extends GridPane {
 						minesPlanted = true;
 					} else {
 						board.showField(buttonsEntry.getKey());
-						logger.trace("Visible:", board.getField(buttonsEntry.getKey()).isVisible());
+						logger.trace("Visible:{}", board.getField(buttonsEntry.getKey()).isVisible());
 					}
 
 				} else if (e.getButton().equals(MouseButton.SECONDARY)) {
 					board.flagAMine(buttonsEntry.getKey());
-					logger.trace("Flag:", board.getField(buttonsEntry.getKey()).isFlaged());
+					logger.trace("Flag:{}", board.getField(buttonsEntry.getKey()).isFlaged());
 
 				}
 				if (board.won())
