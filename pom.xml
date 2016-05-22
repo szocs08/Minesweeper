@@ -24,6 +24,10 @@
 			<distribution>repo</distribution>
 		</license>
 	</licenses>
+	<organization>
+		<name>Unideb</name>
+	</organization>
+	<inceptionYear>2016</inceptionYear>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
@@ -144,4 +148,5 @@
 			</plugin>
 		</plugins>
 	</reporting>
+	
 </project>

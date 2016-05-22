@@ -51,6 +51,7 @@ public class BoardView extends GridPane {
 
 	public BoardView(Difficulty difficulty) {
 		board = new Board(difficulty);
+		logger.trace("Difficulty:", difficulty);
 		if (difficulty != Difficulty.CUSTOM) {
 			for (Position position : board.getBoard().keySet()) {
 				buttons.put(position, new Button());
@@ -140,7 +141,7 @@ public class BoardView extends GridPane {
 				}
 			}
 		} else {
-			buttons.get(position).setText("");
+			buttons.get(position).setGraphic(null);
 		}
 
 	}
