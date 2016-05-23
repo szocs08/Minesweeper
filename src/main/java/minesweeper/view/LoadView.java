@@ -6,7 +6,7 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.control.Dialog;
 import javafx.util.Pair;
 import minesweeper.Board;
-import minesweeper.DOM.BoardDOM;
+import minesweeper.DAO.BoardDOM;
 
 public class LoadView extends Dialog<ButtonType> {
 

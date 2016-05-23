@@ -1,4 +1,4 @@
-package minesweeper.DOM;
+package minesweeper.DAO;
 
 import java.io.File;
 

@@ -4,7 +4,7 @@ package minesweeper.view;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Dialog;
 import minesweeper.Board;
-import minesweeper.DOM.BoardDOM;
+import minesweeper.DAO.BoardDOM;
 
 import java.util.Optional;
 
